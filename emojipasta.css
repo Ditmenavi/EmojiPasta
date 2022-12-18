@@ -1,141 +1,93 @@
-:root{
-	--background: #f8f8f8;
-	--text: #333333;
-	--accordion: #ffffff;
+@import url(../color_pallete/css/theme.css);
+@import url(../Assets/css/font.css);
+* {
+    font-family: Montserrat;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
-.dark-mode{
-	--background: #202020;
-	--text: #ffffff;
-	--accordion: #333333;
+body {
+    background: var(--md-sys-color-inverse-on-surface);
+    color: var(--md-sys-color-on-background);
 }
-body{
-    background-color:var(--background);
-}
-#emojipastainput{
+.wrapper {
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    resize: none;
-    border: none;
-    border-radius: 15px;
-    width:50vw;
-    box-shadow: 0 0 25px -12px #333333;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
-    margin-top: 30px;
-    color: var(--text);
-    font-family: MontserratLight;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
-    outline: none;
-    font-size: 14px;
-    background: var(--accordion);
 }
-#emojipastainput::-webkit-scrollbar{
+.input-wrapper {
+    height: fit-content;
+    width: 650px;
+    max-width: 80vw;
+    padding: 20px;
+    border-radius: 18px;
+    background: var(--md-elv-3);
+}
+.input-wrapper h4 {
+    font-size: 24px;
+    text-align: center;
+    padding-bottom: 12px;
+}
+.input-wrapper textarea {
+    resize: none;
+    background: var(--md-elv-5);
+    border: 0;
+    border-radius: 16px;
+    padding: 12px;
+    outline: none;
+    transition: box-shadow 150ms;
+    color: var(--md-sys-color-on-background);
+    height: 150px;
+    width: 100%;
+    scrollbar-width: none; 
+}
+.input-wrapper textarea::placeholder {
+    opacity: 1;
+    color: var(--md-sys-color-on-background);
+}
+.input-wrapper textarea::-webkit-scrollbar {
     display: none;
 }
-#emojipastageneratebutton{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 40px;
-    width: 30vw;
-    border: none;
-    border-radius: 15px;
-    background-color: var(--accordion);
-    box-shadow: 0 0 25px -12px #333333;
-    font-family: MontserratBold;
-    color: var(--text);
-    cursor: pointer;
+.input-wrapper textarea:hover {
+    box-shadow: 0 0 0 1px var(--md-sys-color-primary);
 }
-#emojipastageneratebutton:hover{
-    background-color: #55ff90;
-    box-shadow: 0 0 25px -2px #55ff90;
-    color: var(--accordion);
-    transition: all 150ms;
+.input-wrapper textarea:focus {
+    box-shadow: 0 0 0 2px var(--md-sys-color-on-primary-container);
 }
-#emojipastaoutput{
-    font-family: MontserratLight;
-    font-size: 14px;
-    color: var(--text);
+.icon {
+    font-size: 40px;
+    color: var(--md-sys-color-primary);
 }
-@font-face {
-    font-family: MontserratLight;
-    src: url(Assets/Montserrat/Montserrat-Light.ttf) format('truetype');
-    font-weight: 300;
-}
-@font-face {
-    font-family: MontserratBold;
-    src: url(Assets/Montserrat/Montserrat-Bold.ttf) format('truetype');
-    font-weight: 700;
-}
-@font-face {
-    font-family: MontserratRegular;
-    src: url(Assets/Montserrat/Montserrat-Regular.ttf) format('truetype');
-    font-weight: 400;
-}
-@font-face {
-	font-family: MontserratSemiBold;
-	src: url(Assets/Montserrat/Montserrat-SemiBold.ttf) format('truetype');
-	font-weight: 600;
-}
-@font-face {
-	font-family: MontserratExtraBold;
-	src: url(Assets/Montserrat/Montserrat-ExtraBold.ttf) format('truetype');
-	font-weight: 800;
-}
-@font-face {
-	font-family: MontserratExtraLight;
-	src: url(Assets/Montserrat/Montserrat-ExtraLight.ttf) format('truetype');
-	font-weight: 200;
-}
-::-webkit-scrollbar{
-    width: 12px;
-    margin-right: 5px;
-}
-::-webkit-scrollbar-track{
-    background: var(--background);
-}
-::-webkit-scrollbar-thumb{
-    background: var(--text);
-    border-radius: 6px;
-    border: 3px solid var(--background);
-}
-.emoji-output{
-    background-color: var(--accordion);
-    box-shadow: 0 0 25px -12px #333333, inset 0 0 15px 0px #ffffff00;
-    min-height: 20vh;
-    width: 50vw;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 15px;
+#output {
+    min-height: 225px;
+    overflow-y: auto;
+    width: 650px;
+    max-width: 80vw;
     padding: 20px;
+    background: var(--md-elv-3);
+    border-radius: 16px;
+    word-wrap: break-word;
+    scrollbar-width: none;
+    transition: box-shadow 150ms;
+}
+#output:hover {
+    box-shadow: 0 0 0 1px var(--md-sys-color-primary);
     cursor: pointer;
-    transition: all 150ms;
 }
-.emoji-output:hover{
-	box-shadow: 0 0 25px -12px #55ff90, inset 0 0 15px 0px #55ff90;
-    border: 3px solid #55ff90;
-    transition: all 150ms;
+#output::-webkit-scrollbar {
+    display: none;
 }
-.emoji-output h3{
-    color: var(--accordion);
-    transition: all 150ms;
-}
-.emoji-output:hover h3{
-    color: #55ff90;
-    transition: all 150ms;
-}
-h2{
-    font-family: MontserratExtraBold;
-    text-align: center;
-    font-size: 35px;
-    color: var(--text);
-}
-.hidden-copy-text{
-    font-family: MontserratExtraBold;
-    font-size: 25px;
-    color: var(--accordion);
-    text-align: center;
+@media only screen and (max-width: 750px) {
+    .input-wrapper {
+        width: 80vw;
+    }
+    #output {
+        width: 80vw;
+    }
 }

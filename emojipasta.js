@@ -46,20 +46,11 @@ function getAlphanumericPrefix(s) {
     return s.match(/^[a-z0-9]*/i);
 }
 
-function writeEmojipasta() {
-    var text = document.getElementById("emojipastainput").value;
-    document.getElementById("emojipastaoutput").innerHTML = generateEmojipasta(text);
-}
-function copyEmojiPasta() {
-    var hiddenCopyText = document.getElementById("hidden-copy-text");
-    var emojiOutput = document.getElementById("emoji-output");
-    hiddenCopyText.innerHTML = "COPIED";
-    setTimeout(function(){
-        hiddenCopyText.innerHTML = "CLICK TO COPY";
-    }, 1500);
-}
-var today = new Date();
-var time = today.getHours();
-if(time>17 || time<6){
-    document.body.classList.toggle("dark-mode");
-}
+// function writeEmojipasta() {
+//     var text = document.getElementById("input").value;
+//     document.getElementById("output").innerHTML = generateEmojipasta(text);
+// }
+document.getElementById("input").addEventListener("input", function() {
+    var text = document.getElementById("input").value;
+    document.getElementById("output").innerHTML = generateEmojipasta(text);
+});

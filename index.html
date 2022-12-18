@@ -6,26 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EmojiPasta</title>
     <link rel="stylesheet" href="emojipasta.css">
-    <link rel="icon" type="image/x-icon" href="https://ditmenavi.xyz/30-43.png">
-    <script src="jquery-min.js"></script>
-    <script>
-        function copyToClipboard(element) {
-            var $temp = $("<textarea>");
-            $("body").append($temp);
-            $temp.val($(element).html().trim().replace(/  +/g, ' ').replace('<span class="hashtag">', '').replace('<span class="karambit">', '').replace('</span>', '').replace(/<br\s*[\/]?>/gi, "")).select();
-            document.execCommand("copy");
-            $temp.remove();
-        }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="../Assets/css/copy.js"></script>
 </head>
 <body>
-    <h2>INPUT</h2>
-    <textarea id="emojipastainput" rows="10"></textarea>
-    <button id="emojipastageneratebutton" onclick="writeEmojipasta();">Generate</button>
-    <h2>OUTPUT</h2>
-    <div class="emoji-output" id="emoji-output" onclick="copyEmojiPasta('#emojipastaoutput'); copyToClipboard('#emojipastaoutput')">
-        <div id="emojipastaoutput"></div><br>
-        <h3 class="hidden-copy-text" id="hidden-copy-text">CLICK ON THE TEXT TO COPY</h3>
+    <div class="wrapper">
+        <h1>EmojiPasta</h1>
+        <div class="input-wrapper">
+            <h4>Input</h4>
+            <textarea type="text" id="input" placeholder="whatever" autofocus></textarea>
+        </div>
+        <i class="icon fa-solid fa-caret-down"></i>
+        <div id="output" onclick="copyToClipboard('#output'); alert('Đã copy')"></div>
     </div>
     <script src="emoji-mappings.js"></script>
     <script src="emojipasta.js"></script>
